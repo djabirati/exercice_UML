@@ -1,0 +1,12 @@
+Pourquoi le constructeur de DatabaseConnection est-il privé ?
+En Java, un constructeur privé permet de s'assurer qu'une seule instance de la classe peut être créée à la fois.
+Cela limite la création d'objets uniquement à l'intérieur de la classe elle-même, empêchant toute création d'instances en dehors de celle-ci.
+C'est une façon de mieux contrôler la gestion des objets dans le programme.
+
+Quelle est l’utilité de la méthode getInstance() dans ce contexte ?
+Ici instance permet la création de notre intance de classe dans le cas où elle est null.
+
+Que se passerait-il si nous supprimions la condition if (instance == null) dans la méthode getInstance() ?
+Sans la condition qui vérifie si instance existe (donc non null) on aurait notre instance de DatabaseConnection qui serait créée a chaque fois que la méthode
+getInstance est appelé. En effet sans le if (instance == null) le programme ne vérifie à aucun moment s'il existe déjà.
+

@@ -1,0 +1,29 @@
+@startuml
+class Utilisateur {
+  -nom : String
+  -email : String
+  +passerCommande() : void
+}
+
+class Produit {
+  -nom : String
+  -prix : double
+}
+
+class Commande {
+  -produits : List<Produit>
+  -total : double
+  +ajouterProduit(p: Produit) : void
+  +confirmerCommande() : void
+}
+
+class SystemeDePaiement {
+  -statutPaiement : String
+  +validerPaiement() : void
+}
+
+Utilisateur "1" -- "0..*" Commande : passe
+Commande "1" -- "0..*" Produit : contient
+Commande "1" -- "1" SystemeDePaiement : utilise
+
+@enduml

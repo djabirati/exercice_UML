@@ -1,0 +1,16 @@
+@startuml
+actor Utilisateur
+participant "Page de Commande" as CommandePage
+participant "Système de Paiement" as PaymentSystem
+participant "Base de Données" as Database
+
+Utilisateur -> CommandePage : Ajouter produit au panier
+CommandePage -> Database : Ajouter produit dans la commande
+Utilisateur -> CommandePage : Confirmer la commande
+CommandePage -> PaymentSystem : Demander validation du paiement
+PaymentSystem -> PaymentSystem : Valider le paiement
+PaymentSystem -> CommandePage : Paiement validé
+CommandePage -> Database : Mettre à jour la commande (statut validé)
+CommandePage -> Utilisateur : Confirmer la commande validée
+
+@enduml
